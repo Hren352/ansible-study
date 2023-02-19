@@ -3,5 +3,12 @@ ansible-playbook -i inventory.ini mkdir.yml
 ansible-playbook -i inventory.ini newfile.yml
 ansible test -i inventory.ini -m ping
 #прописали в ansible.cfg хосты (-i inventory.ini) и теперь можно их не указывать в команде
-ansible test -m command -a uptime
+ansible test -m command -a uptime #coomand модуль исп по умолчанию, можно без него
+ansible test -a uptime 
+ansible test -a "uptime"
+ansible test -a "tail /var/log/dmesg" #если команда содержит пробел, нажны кавычки
+ansible test -b -a "tail /var/log/syslog" #если нужно от рута, тогда используем -b
+######ГЛАВА-2 СЦЕНАРИИ: НАЧАЛО#############
+
+
 
