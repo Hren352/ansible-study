@@ -12,5 +12,25 @@ ansible test -b -a "tail /var/log/syslog" #если нужно от рута, т
 #если файл сценария отмечен как выполняемый, его можно запустить ./web-notls.yml
 #но в самом файле в начале дожен быть шебанг #!/usr/bin/env ansible-playbook
 
+#объединение строк используем символ >
+file: >
+  dest=/etc/nginx/sites-enabled/default
+  src=/etc/nginx/sites-available/default
+  state=link
+
+ansible-doc service #справка по модулю из bash
+
+#создаем сертификат TLS самоподписанный
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
+  -subj /CN=localhost \
+  -keyout files/nginx.key -out files/nginx.crt
+
+# рестарт сервиса state=restarted или перезагрузка конфигурации state=reloaded
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
+
+
+
 
 
