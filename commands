@@ -1,0 +1,7 @@
+ansible test -i inventory.ini -a "free -h"
+ansible-playbook -i inventory.ini mkdir.yml
+ansible-playbook -i inventory.ini newfile.yml
+ansible test -i inventory.ini -m ping
+#прописали в ansible.cfg хосты (-i inventory.ini) и теперь можно их не указывать в команде
+ansible test -m command -a uptime
+
