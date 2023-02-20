@@ -30,6 +30,7 @@ openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
     - name: restart nginx
       service: name=nginx state=restarted
 
+######ГЛАВА-3 РЕЕСТР: ОПИСАНИЕ СЕРВЕРОВ#############
 
 
 
