@@ -1,0 +1,14 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: pass a message to the command line
+  hosts: ans-donor1
+  #gather_facts: True
+  #become: True
+  tasks:
+  #- debug: var=ansible_distribution
+
+  - name: show message
+    vars:
+      message: "you didn`t specify a message"
+    debug: msg="{{ message }}"
+  

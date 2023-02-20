@@ -32,6 +32,12 @@ openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
 
 ######ГЛАВА-3 РЕЕСТР: ОПИСАНИЕ СЕРВЕРОВ#############
 
+######ГЛАВА-4 РЕЕСТР: ПЕРЕМЕННЫЕ И ФАКТЫ#############
+ansible ans-donor1 -m setup #модуль setup выводит всю инфу о сервере
+ansible ans-donor1 -m setup -a 'filter=ansible_eth*'
 
+ansible-playbook cmd-vars.yml -e message=hi! #передача значения переменной в командной строке
+ansible-playbook cmd-vars.yml -e 'message="hello my friend!"' #передача значения с пробелами
+ansible-playbook cmd-vars.yml -e @myvars.yml #передача значения переменной из файла
 
 

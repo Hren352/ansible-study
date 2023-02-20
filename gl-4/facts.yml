@@ -1,0 +1,18 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: gathering facts
+  hosts: gr1
+  gather_facts: True
+  become: True
+  tasks:
+  #- debug: var=ansible_distribution
+
+  - name: show OS version
+    debug: var=ansible_distribution
+  
+  - name: show vars
+  #  hosts: ans-donor1
+    debug: var=inventory_hostname
+
+  - name: show vars 2
+    debug: var=ansible_host
